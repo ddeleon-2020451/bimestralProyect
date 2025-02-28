@@ -1,0 +1,363 @@
+{
+	"info": {
+		"_postman_id": "c370805d-6e03-46bf-86a9-dfb5f9178555",
+		"name": "BimestralProyect",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "38261665"
+	},
+	"item": [
+		{
+			"name": "USER",
+			"item": [
+				{
+					"name": "addAdmin",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Mariela",
+									"type": "text"
+								},
+								{
+									"key": "surname",
+									"value": "Aguilar",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "Amariela@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "12345678",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "marielaa",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "Maguilar-1702",
+									"type": "text"
+								},
+								{
+									"key": "role",
+									"value": "admin",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3626/register",
+							"host": [
+								"localhost"
+							],
+							"port": "3626",
+							"path": [
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "addClient",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Josue",
+									"type": "text"
+								},
+								{
+									"key": "surname",
+									"value": "Escalante",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "jjesca@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "12345678",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "jjesca",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "Jesca-2000",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3626/register",
+							"host": [
+								"localhost"
+							],
+							"port": "3626",
+							"path": [
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var data = JSON.parse(responseBody);\r",
+									"postman.setGlobalVariable(\"token\", data.token)"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "userLoggin",
+									"value": "marielaa",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "Maguilar-1702",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3626/login",
+							"host": [
+								"localhost"
+							],
+							"port": "3626",
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getUserId",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3626/v1/user/67b18266578178c562482c4e",
+							"host": [
+								"localhost"
+							],
+							"port": "3626",
+							"path": [
+								"v1",
+								"user",
+								"67b18266578178c562482c4e"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getUser",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3626/v1/user/",
+							"host": [
+								"localhost"
+							],
+							"port": "3626",
+							"path": [
+								"v1",
+								"user",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateUser",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Diego",
+									"type": "text"
+								},
+								{
+									"key": "surname",
+									"value": "de León",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "ddesca@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "87654321",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3626/v1/user/67b18266578178c562482c4e",
+							"host": [
+								"localhost"
+							],
+							"port": "3626",
+							"path": [
+								"v1",
+								"user",
+								"67b18266578178c562482c4e"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteUser",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3626/v1/user/67b2b41d6671aaf4e4e53eda",
+							"host": [
+								"localhost"
+							],
+							"port": "3626",
+							"path": [
+								"v1",
+								"user",
+								"67b2b41d6671aaf4e4e53eda"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "test",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:3626/test",
+					"host": [
+						"localhost"
+					],
+					"port": "3626",
+					"path": [
+						"test"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
