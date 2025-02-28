@@ -1,7 +1,7 @@
 //VALIDAR CAMPOS EN LAS RUTAS
 import { body } from "express-validator"
 import { validateErrors } from "./validate.errors.js"
-import { existUsername } from "./db.validators.js"
+import { existUsername, existCategory } from "./db.validators.js"
 
 export const registerValidator = [
     body('name', 'Name is required').notEmpty(),
@@ -23,4 +23,12 @@ export const validateAddCategory = [
     body('name', 'Name is required').notEmpty(),
     body('description', 'Description is required').notEmpty(),
     validateErrors
+]
+
+export const validateProduct = [
+    body('name', 'Name is required').notEmpty(),
+    body('description', 'Description is required').notEmpty(),
+    body('price', 'Price is required').isNumeric().isFloat(),
+    body('stock', 'Scotk of product is required').isNumeric().isInt(),
+    body('category', 'Category ID is required and valid').notEmpty().custom(existCategory)
 ]
