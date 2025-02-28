@@ -18,9 +18,6 @@ const categorySchema = new Schema(
             default: true,
         },
     },
-    {
-        timestamps: true,
-    }
 )
 
 categorySchema.methods.toJSON = function () {

@@ -24,8 +24,6 @@ api.post(
     login
 )
 
-//Rutas privadas
-                 //middleware
 api.get('/test', validateJwt, test)
 
 //Exportar

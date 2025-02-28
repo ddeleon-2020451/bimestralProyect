@@ -18,3 +18,9 @@ export const loginValidator = [
     body('password', 'Password is required').notEmpty(),
     validateErrors
 ]
+
+export const validateAddCategory = [
+    body('name', 'Name is required').notEmpty(),
+    body('description', 'Description is required').notEmpty(),
+    validateErrors
+]

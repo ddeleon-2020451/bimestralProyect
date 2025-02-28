@@ -9,7 +9,7 @@ export const generateJwt = async(payload)=>{
             payload,
             process.env.SECRET_KEY,
             {
-                expiresIn: '3h', //Lo recomendable son 1 o 2
+                expiresIn: '3h', 
                 algorithm: 'HS256'
             }
         )
