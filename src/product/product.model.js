@@ -21,7 +21,7 @@ const productSchema = Schema(
         stock: {
             type: Number,
             required: [true, "Stock is required"],
-            min: [0, "Stock cannot be negative"],
+            min: [1, "Stock cannot be negative"],
             default: 0,
         },
         category: {
@@ -29,13 +29,14 @@ const productSchema = Schema(
             ref: "Category",
             required: [true, "Category is required"],
         },
+        bestseller: {
+            type: Boolean,
+            default: false,
+        },
         status: {
             type: Boolean,
             default: true,
         }
-    },
-    {
-        timestamps: true,
     }
 )
 
