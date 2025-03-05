@@ -77,6 +77,40 @@ export const getProduct = async(req,res)=>{
     }
 }
 
+export const getProductId = async(req,res)=>{
+    try{
+        const { id } = req.params
+        const product = await Product.findById(id).populate(
+            {
+                path: 'category',
+                select: 'name description'
+            }
+        )
+        if(!product) return res.status(400).send(
+            {
+                succes: false,
+                message: 'Product not found',
+            }
+        )
+        return res.send(
+            {
+                succes: true,
+                message: 'Product found',
+                product
+            }
+        )
+    }catch(err){
+        console.log(err)
+        return res.status(500).send(
+            {
+                succes: false,
+                message: 'General error',
+                err
+            }
+        )
+    }
+}
+
 export const updateProduct = async(req,res)=>{
     try{
         if (!req.user || req.user.role !== 'ADMIN') {

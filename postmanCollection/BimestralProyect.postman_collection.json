@@ -19,17 +19,17 @@
 							"urlencoded": [
 								{
 									"key": "name",
-									"value": "Mariela",
+									"value": "Diego",
 									"type": "text"
 								},
 								{
 									"key": "surname",
-									"value": "Aguilar",
+									"value": "Escalante",
 									"type": "text"
 								},
 								{
 									"key": "email",
-									"value": "Amariela@gmail.com",
+									"value": "ddesca@gmail.com",
 									"type": "text"
 								},
 								{
@@ -39,12 +39,12 @@
 								},
 								{
 									"key": "username",
-									"value": "marielaa",
+									"value": "ddesca",
 									"type": "text"
 								},
 								{
 									"key": "password",
-									"value": "Maguilar-1702",
+									"value": "Desca-1702",
 									"type": "text"
 								},
 								{
@@ -77,17 +77,17 @@
 							"urlencoded": [
 								{
 									"key": "name",
-									"value": "Josue",
+									"value": "Sofia",
 									"type": "text"
 								},
 								{
 									"key": "surname",
-									"value": "Escalante",
+									"value": "Herrera",
 									"type": "text"
 								},
 								{
 									"key": "email",
-									"value": "jjesca@gmail.com",
+									"value": "sofhz@gmail.com",
 									"type": "text"
 								},
 								{
@@ -97,12 +97,12 @@
 								},
 								{
 									"key": "username",
-									"value": "jjesca",
+									"value": "shz",
 									"type": "text"
 								},
 								{
 									"key": "password",
-									"value": "Jesca-2000",
+									"value": "Sofhz-1702",
 									"type": "text"
 								}
 							]
@@ -121,7 +121,7 @@
 					"response": []
 				},
 				{
-					"name": "login",
+					"name": "loginAdmin",
 					"event": [
 						{
 							"listen": "test",
@@ -159,12 +159,64 @@
 							"urlencoded": [
 								{
 									"key": "userLoggin",
-									"value": "marielaa",
+									"value": "ddesca",
 									"type": "text"
 								},
 								{
 									"key": "password",
-									"value": "Maguilar-1702",
+									"value": "Desca-1702",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3626/login",
+							"host": [
+								"localhost"
+							],
+							"port": "3626",
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "loginClient",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var data = JSON.parse(responseBody);\r",
+									"postman.setGlobalVariable(\"token\", data.token)"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "userLoggin",
+									"value": "shz",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "Sofhz-1702",
 									"type": "text"
 								}
 							]
@@ -194,7 +246,7 @@
 							}
 						],
 						"url": {
-							"raw": "localhost:3626/v1/user/67b18266578178c562482c4e",
+							"raw": "localhost:3626/v1/user/67c1c6aaa3b5997471411197",
 							"host": [
 								"localhost"
 							],
@@ -202,7 +254,7 @@
 							"path": [
 								"v1",
 								"user",
-								"67b18266578178c562482c4e"
+								"67c1c6aaa3b5997471411197"
 							]
 						}
 					},
@@ -328,6 +380,454 @@
 								"v1",
 								"user",
 								"67b2b41d6671aaf4e4e53eda"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Category",
+			"item": [
+				{
+					"name": "addCategory",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Entretenimiento",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Consolas y juegos para divertirte",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3626/v1/category/",
+							"host": [
+								"localhost"
+							],
+							"port": "3626",
+							"path": [
+								"v1",
+								"category",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getCategory",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3626/v1/category/",
+							"host": [
+								"localhost"
+							],
+							"port": "3626",
+							"path": [
+								"v1",
+								"category",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateCategory",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Computo",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3626/v1/category/67c1c141c920f0a092e7eaf8",
+							"host": [
+								"localhost"
+							],
+							"port": "3626",
+							"path": [
+								"v1",
+								"category",
+								"67c1c141c920f0a092e7eaf8"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteCategory",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3626/v1/category/67c1cea65a7336c93189ab68",
+							"host": [
+								"localhost"
+							],
+							"port": "3626",
+							"path": [
+								"v1",
+								"category",
+								"67c1cea65a7336c93189ab68"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Product",
+			"item": [
+				{
+					"name": "addProduct",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Mouse",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Mouse de la marca LogiTech",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "650",
+									"type": "text"
+								},
+								{
+									"key": "stock",
+									"value": "4",
+									"type": "text"
+								},
+								{
+									"key": "category",
+									"value": "67c1c141c920f0a092e7eaf8",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3626/v1/product/",
+							"host": [
+								"localhost"
+							],
+							"port": "3626",
+							"path": [
+								"v1",
+								"product",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getProduct",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3626/v1/product/",
+							"host": [
+								"localhost"
+							],
+							"port": "3626",
+							"path": [
+								"v1",
+								"product",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getProductId",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3626/v1/product/67c25c57c94e6b2160849444",
+							"host": [
+								"localhost"
+							],
+							"port": "3626",
+							"path": [
+								"v1",
+								"product",
+								"67c25c57c94e6b2160849444"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateProduct",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "description",
+									"value": "Monitor de 25 pulgadas",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "1850",
+									"type": "text"
+								},
+								{
+									"key": "stock",
+									"value": "7",
+									"type": "text"
+								},
+								{
+									"key": "",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3626/v1/product/67c5b6936c5f61aec2dec6f2",
+							"host": [
+								"localhost"
+							],
+							"port": "3626",
+							"path": [
+								"v1",
+								"product",
+								"67c5b6936c5f61aec2dec6f2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteProduct",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3626/v1/product/67c5b8736c5f61aec2dec6fe",
+							"host": [
+								"localhost"
+							],
+							"port": "3626",
+							"path": [
+								"v1",
+								"product",
+								"67c5b8736c5f61aec2dec6fe"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Cart",
+			"item": [
+				{
+					"name": "addCart",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "user",
+									"value": "67c1c6aaa3b5997471411197",
+									"type": "text"
+								},
+								{
+									"key": "product",
+									"value": "67c25c57c94e6b2160849444",
+									"type": "text"
+								},
+								{
+									"key": "quantity",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3626/v1/cart/",
+							"host": [
+								"localhost"
+							],
+							"port": "3626",
+							"path": [
+								"v1",
+								"cart",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getCart",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3626/v1/cart/67c78b6714d6fff5da791a6a",
+							"host": [
+								"localhost"
+							],
+							"port": "3626",
+							"path": [
+								"v1",
+								"cart",
+								"67c78b6714d6fff5da791a6a"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Facture",
+			"item": [
+				{
+					"name": "addFacture",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "userId",
+									"value": "67c1c6aaa3b5997471411197",
+									"type": "text"
+								},
+								{
+									"key": "products",
+									"value": "67c5b6936c5f61aec2dec6f2",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3626/v1/facture/",
+							"host": [
+								"localhost"
+							],
+							"port": "3626",
+							"path": [
+								"v1",
+								"facture",
+								""
 							]
 						}
 					},
